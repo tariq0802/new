@@ -6,6 +6,7 @@ import { useState } from "react";
 import SidePanel from "./sidepanel";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 const ToggleMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +14,13 @@ const ToggleMenu = () => {
   return (
     <>
       <div className="flex flex-row gap-4 items-center">
-        <div
+        <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 flex flex-row items-center cursor-pointer hover:shadow-md transition rounded"
+          variant="ghost"
+          className="px-2 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
         >
-          <Menu />
-        </div>
+          <Menu className="w-5 h-5" />
+        </Button>
       </div>
 
       <SidePanel isOpen={isOpen} onClose={() => setIsOpen(false)}>
@@ -30,10 +32,10 @@ const ToggleMenu = () => {
             onClick={() => setIsOpen(false)}
           >
             <span className="sr-only">Close panel</span>
-            <X />
+            <X className="w-5 h-5" />
           </button>
         </div>
-        <Separator className="my-2" />
+        <Separator />
 
         <div className="flex h-full flex-col overflow-y-auto shadow-xl">
           <div className="py-4 px-3">

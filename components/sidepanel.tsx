@@ -17,7 +17,7 @@ const SidePanel: React.FC<SidepanelProps> = ({ isOpen, onClose, children }) => {
             enter="ease-in-out duration-500"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in-out duration-500"
+            leave="ease-in-out duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -29,10 +29,10 @@ const SidePanel: React.FC<SidepanelProps> = ({ isOpen, onClose, children }) => {
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
                 <Transition.Child
                   as={Fragment}
-                  enter="transform transition ease-in-out duration-500 sm:duration-500"
+                  enter="transform transition ease-in-out duration-300"
                   enterFrom="translate-x-full"
                   enterTo="translate-x-0"
-                  leave="transform transition ease-in-out duration-500 sm:duration-500"
+                  leave="transform transition ease-in-out duration-300"
                   leaveFrom="translate-x-0"
                   leaveTo="translate-x-full"
                 >
