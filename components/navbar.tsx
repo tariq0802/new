@@ -5,6 +5,7 @@ import Image from "next/image";
 import Container from "./container";
 import ToggleMenu from "./menu";
 import UserMenu from "./user-menu";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,9 +17,15 @@ import {
 } from "./ui/navigation-menu";
 import { Icons } from "./icons";
 import { ListItem } from "./list-item";
-import { Home } from "lucide-react";
+import { Home, LogIn } from "lucide-react";
+import { getAuthSession } from "@/lib/auth";
+import { Session } from "next-auth";
+import Login from "./login";
+import { buttonVariants } from "./ui/button";
 
-interface navbarProps {}
+interface NavbarProps {
+  session: Session | null;
+}
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,9 +65,9 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const NavBar: React.FC<navbarProps> = ({}) => {
+const NavBar: React.FC<NavbarProps> = ({ session }) => {
   return (
-    <div className="fixed w-full bg-slate-50 z-10 shadow-sm">
+    <div className="fixed w-full bg-cyan-100 z-10 shadow-sm">
       <div className="flex flex-col">
         <Container>
           <div className="flex flex-row md:py-4 py-2 items-center justify-between gap-3 md:gap-0">
@@ -84,13 +91,26 @@ const NavBar: React.FC<navbarProps> = ({}) => {
             </Link>
 
             <div className="flex items-center">
-              <UserMenu />
+              {session?.user ? (
+                <UserMenu user={session.user} />
+              ) : (
+                <Link
+                  href="/sign-in"
+                  className={
+                    (buttonVariants({ variant: "ghost" }),
+                    "p-2 rounded text-gray-800 hover:text-black hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white")
+                  }
+                >
+                  <LogIn className="h-4 w-5" />
+                </Link>
+              )}
+
               <ToggleMenu />
             </div>
           </div>
         </Container>
 
-        <div className="flex flex-row gap-4 justify-center items-center bg-slate-800 text-slate-100 text-sm">
+        <div className="flex flex-row justify-center items-center bg-slate-800 text-slate-100 text-sm">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -102,7 +122,7 @@ const NavBar: React.FC<navbarProps> = ({}) => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent rounded-none">
+                <NavigationMenuTrigger className="bg-transparent rounded-none px-2">
                   Articles
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -142,7 +162,9 @@ const NavBar: React.FC<navbarProps> = ({}) => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="px-2">
+                  Components
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     {components.map((component) => (

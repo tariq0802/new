@@ -17,7 +17,7 @@ const ToggleMenu = () => {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           variant="ghost"
-          className="px-2 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
+          className="px-2 text-gray-800 hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
         >
           <Menu className="w-5 h-5" />
         </Button>
