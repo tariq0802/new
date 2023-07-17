@@ -18,9 +18,7 @@ import {
 import { Icons } from "./icons";
 import { ListItem } from "./list-item";
 import { Home, LogIn } from "lucide-react";
-import { getAuthSession } from "@/lib/auth";
 import { Session } from "next-auth";
-import Login from "./login";
 import { buttonVariants } from "./ui/button";
 
 interface NavbarProps {
