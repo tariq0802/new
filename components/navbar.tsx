@@ -65,7 +65,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 const NavBar: React.FC<NavbarProps> = ({ session }) => {
   return (
-    <div className="fixed w-full bg-cyan-100 z-10 shadow-sm">
+    <div className="fixed top-0 inset-x-0 h-fit w-full bg-cyan-100 z-50 shadow-sm">
       <div className="flex flex-col">
         <Container>
           <div className="flex flex-row md:py-4 py-2 items-center justify-between gap-3 md:gap-0">
