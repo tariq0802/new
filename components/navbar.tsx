@@ -17,7 +17,8 @@ import {
 } from "./ui/navigation-menu";
 import { Icons } from "./icons";
 import { ListItem } from "./list-item";
-import { Home, LogIn } from "lucide-react";
+import { LogIn } from "lucide-react";
+import { HomeIcon } from "@radix-ui/react-icons";
 import { Session } from "next-auth";
 import { buttonVariants } from "./ui/button";
 
@@ -65,7 +66,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 const NavBar: React.FC<NavbarProps> = ({ session }) => {
   return (
-    <div className="fixed top-0 inset-x-0 h-fit w-full bg-cyan-100 z-50 shadow-sm">
+    <div className="fixed w-full bg-cyan-100 z-10 shadow-sm">
       <div className="flex flex-col">
         <Container>
           <div className="flex flex-row md:py-4 py-2 items-center justify-between gap-3 md:gap-0">
@@ -77,6 +78,7 @@ const NavBar: React.FC<NavbarProps> = ({ session }) => {
                   height="35"
                   width="35"
                   src="/images/logo.png"
+                  priority
                 />
               </div>
               <Image
@@ -85,6 +87,7 @@ const NavBar: React.FC<NavbarProps> = ({ session }) => {
                 height="100"
                 width="200"
                 src="/images/logo1.png"
+                priority
               />
             </Link>
 
@@ -114,7 +117,7 @@ const NavBar: React.FC<NavbarProps> = ({ session }) => {
               <NavigationMenuItem>
                 <Link href="/docs" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <Home className="h-4 w-4" />
+                    <HomeIcon className="h-4 w-4" />
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>

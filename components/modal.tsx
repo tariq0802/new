@@ -4,18 +4,15 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 interface ModalProps {
-  title?: string;
+  title: string;
   description?: string;
   isOpen: boolean;
   onClose: () => void;
-  onSubmit?: () => void;
   children?: React.ReactNode;
 }
 
@@ -24,7 +21,6 @@ export const Modal: React.FC<ModalProps> = ({
   description,
   isOpen,
   onClose,
-  onSubmit,
   children,
 }) => {
   const onChange = (open: boolean) => {

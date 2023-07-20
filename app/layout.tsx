@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Container from "@/components/container";
 import Provider from "@/providers/provider";
 import { getAuthSession } from "@/lib/auth";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getAuthSession();
-  
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -29,6 +30,7 @@ export default async function RootLayout({
             <div className="pt-32">{children}</div>
           </Container>
         </Provider>
+        <Toaster />
       </body>
     </html>
   );

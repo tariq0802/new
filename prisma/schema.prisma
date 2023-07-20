@@ -61,7 +61,7 @@ model Article {
   title         String
   slug          String       @unique
   description   String?
-  image         String?
+  image         String?      @db.Text
   content       Json?
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
@@ -89,7 +89,7 @@ model Category {
   label       String
   slug        String    @unique
   description String?
-  image       String?
+  image       String?   @db.Text
   articles    Article[]
 }
 
